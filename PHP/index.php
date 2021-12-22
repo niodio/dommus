@@ -28,4 +28,5 @@
 
   echo "<pre>" . $agenda->imprimirJsonEventosDiaOrdenados('2021-11-26') . "</pre>";
 
+
 ?>

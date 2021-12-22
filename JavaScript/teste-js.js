@@ -17,70 +17,95 @@ imprima no console a quantidade de nomes em "nomesIdadePar" da resposta,
 a quantidade de nomes em "nomesIdadeImpar" da resposta, bem como os nomes em cada
 um dos arrays, ordenados alfabeticamente de forma crescente.
 **/
+
 const pessoas = [
   {
     nome: "Rafael",
-    idade: 30
+    idade: 30,
   },
   {
     nome: "Ambrosina",
-    idade: 87
+    idade: 87,
   },
   {
     nome: "José",
-    idade: 25
+    idade: 25,
   },
   {
     nome: "André",
-    idade: 23
+    idade: 23,
   },
   {
     nome: "Brenda",
-    idade: 23
+    idade: 23,
   },
   {
     nome: "Carlinhos",
-    idade: "27"
+    idade: "27",
   },
   {
     nome: "Nivea",
-    idade: 19
+    idade: 19,
   },
   {
     nome: "Jaison",
-    idade: 34
+    idade: 34,
   },
   {
     nome: "Adriana",
-    idade: 28
+    idade: 28,
   },
   {
     nome: "Edenilson",
-    idade: 33
+    idade: 33,
   },
   {
     nome: "Claudio",
-    idade: 16
+    idade: 16,
   },
   {
     nome: "Flavia",
-    idade: 32
+    idade: 32,
   },
   {
     nome: "Bruno",
-    idade: 28
+    idade: 28,
   },
   {
     nome: "Marcia",
-    idade: 24
-  }
+    idade: 24,
+  },
 ];
 
+async function separarPorIdade(pessoas) {
+  const pessoasIdadePar = pessoas.filter((pessoa) => pessoa.idade % 2 === 0);
+  const pessoasIdadeImpar = pessoas.filter((pessoa) => pessoa.idade % 2 !== 0);
+  const pessoasIdadeParOrdenada = pessoasIdadePar.sort(function (a, b) {
+    return a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0;
+  });
+  const pessoasIdadeImparOrdenada = pessoasIdadeImpar.sort(function (a, b) {
+    return a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0;
+  });
+
+  return {
+    pessoasIdadePar: pessoasIdadeParOrdenada,
+    pessoasIdadeImpar: pessoasIdadeImparOrdenada,
+    pessoasIdadeParOrdenada: pessoasIdadeParOrdenada,
+    pessoasIdadeImparOrdenada: pessoasIdadeImparOrdenada,
+  };
+}
 // TODO implementar função assíncrona e anônima separarPorIdade
 
 separarPorIdade(pessoas).then((resposta) => {
   // TODO imprimir no console a quantidade de nomes de pessoas com idade par. Saída esperada: 7
+  console.log(resposta.pessoasIdadePar.length);
   // TODO imprimir no console a quantidade de nomes de pessoas com idade impar. Saída esperada: 7
+  console.log(resposta.pessoasIdadeImpar.length);
   // TODO imprimir no console a os nomes de pessoas com idade par ordenados alfabeticamente. Saída esperada: ['Adriana', 'Bruno', 'Claudio', 'Flavia', 'Jaison', 'Marcia', 'Rafael']
+  console.log(resposta.pessoasIdadeParOrdenada);
   // TODO imprimir no console a os nomes de pessoas com idade ímpar ordenados alfabeticamente. Saída esperada: ['Ambrosina', 'André', 'Brenda', 'Carlinhos', 'Edenilson', 'José', 'Nivea']
+  console.log(resposta.pessoasIdadeImparOrdenada);
 });
+
+// para executar o exercício:
+// node teste-js.js
